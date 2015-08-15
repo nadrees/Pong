@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody>();
 
 		var lrStartingDirection = Random.value < .5 ? -1 : 1;
-		var udStartingDirection = 1; //Random.value * 2 - 1;
+		var udStartingDirection = Random.value * 2 - 1;
 		rigidBody.velocity = (new Vector3(lrStartingDirection, udStartingDirection) * Speed);
 	}
 
