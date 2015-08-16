@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 
 public class PaddleController : MonoBehaviour {
-	public float MaxTopPosition;
-	public float MaxBottomPosition;
 	public bool IsLeftPaddle;
 	public float Speed;
 
