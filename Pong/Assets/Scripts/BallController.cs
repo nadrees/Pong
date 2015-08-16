@@ -29,6 +29,8 @@ public class BallController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Goal")) {
 			other.gameObject.GetComponent<GoalController>().IncrimentScore();
+			GameController.Instance.GoalScored();
+
 			Destroy(this.gameObject);
 			Instance = null;
 		}
