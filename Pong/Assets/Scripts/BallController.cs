@@ -41,6 +41,7 @@ public class BallController : MonoBehaviour {
 			if (bumpCount == BumpFrequency) {
 				bumpCount = 0;
 				currentSpeed *= SpeedBump;
+				GameController.Instance.DisplayToast("SPEED UP!");
 			}
 
 			var angle = (transform.position - other.transform.position) / other.bounds.size.y;
