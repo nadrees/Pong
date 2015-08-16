@@ -4,7 +4,6 @@ public class BallController : MonoBehaviour {
 	public static BallController Instance { get; private set; }
 
 	public float InitialSpeed;
-	public float BounceStrength;
 
 	Rigidbody rigidBody;
 
@@ -22,10 +21,9 @@ public class BallController : MonoBehaviour {
 		if (other.CompareTag("Wall"))
 			rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y * -1);
 		else if (other.CompareTag("Player")) {
-			var angle = Vector2.Angle(other.transform.position, transform.position);
-			if (other.transform.position.y > transform.position.y)
-				angle *= -1;
-			rigidBody.velocity = new Vector3(rigidBody.velocity.x * -1, angle) * BounceStrength;
+			var angle = (transform.position - other.transform.position) / other.bounds.size.y;
+			angle *= InitialSpeed;
+			rigidBody.velocity = new Vector3(rigidBody.velocity.x * -1, angle.y);
 		}
 	}
 }
