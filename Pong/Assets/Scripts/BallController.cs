@@ -27,7 +27,12 @@ public class BallController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.CompareTag("Wall"))
+		if (other.CompareTag("Goal")) {
+			other.gameObject.GetComponent<GoalController>().IncrimentScore();
+			Destroy(this.gameObject);
+			Instance = null;
+		}
+		else if (other.CompareTag("Wall"))
 			udDirection *= -1;
 		else if (other.CompareTag("Player")) {
 			bumpCount++;
